@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Eleve{% endblock %}
+
+{% block body %}
+    <h1>Eleve</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ eleve.id }}</td>
+            </tr>
+            <tr>
+                <th>Login</th>
+                <td>{{ eleve.login }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ eleve.password }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('eleve_index') }}">Retour à la liste</a>
+
+    <a href="{{ path('eleve_edit', {'id': eleve.id}) }}">Modifier</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Evaluation</th>
+                <th>Competence</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for result in results %}
+            <tr>
+                <td>{{ result.eval.title }}</td>
+                <td>{{ result.competence.title }}</td>
+                <td>{{ result.note }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {{ include('eleve/_delete_form.html.twig') }}
+{% endblock %}

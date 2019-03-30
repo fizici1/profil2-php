@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Eleve index{% endblock %}
+
+{% block body %}
+    <h1>Gestion des élèves</h1>
+    <div class='row'>
+      <div class='col-md-6'>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Login</th>
+                    <th>Classe</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for eleve in eleves %}
+                <tr>
+                    <td>{{ eleve.login }}</td>
+                    <td>{{ eleve.classe.title }}</td>
+                    <td>
+                        <a href="{{ path('eleve_show', {'id': eleve.id}) }}">show</a>
+                        <a href="{{ path('eleve_edit', {'id': eleve.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+      </div>
+      <div class='col-md-6'>
+        <a href="{{ path('eleve_new') }}" class="btn btn-secondary">Nouvel élève</a>
+      </div>
+    </div>
+
+{% endblock %}

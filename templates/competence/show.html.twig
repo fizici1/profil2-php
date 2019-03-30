@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Competence{% endblock %}
+
+{% block body %}
+    <h1>Compétence</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ competence.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ competence.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ competence.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('competence_index') }}">Retour à la liste</a>
+
+    <a href="{{ path('competence_edit', {'id': competence.id}) }}">Modifier</a>
+
+    {{ include('competence/_delete_form.html.twig') }}
+{% endblock %}
